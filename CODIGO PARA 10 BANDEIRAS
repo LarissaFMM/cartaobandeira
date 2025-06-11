@@ -1,0 +1,56 @@
+public class ValidateCreditCard {
+    public static String validateCreditCard(String number) {
+        String num = number.replaceAll("\\D", "");
+
+        if (num.matches("^4\\d{15}$")) {
+            return "Visa 16 Dígitos";
+        }
+        if (num.matches("^4\\d{12,18}$")) {
+            return "Visa";
+        }
+        if (num.matches("^(5[1-5]\\d{14}|2(2[2-9]\\d{12}|2[3-9]\\d{13}|[3-6]\\d{14}|7[01]\\d{13}|720\\d{12}))$")) {
+            return "MasterCard";
+        }
+        if (num.matches("^5[1-5]\\d{14}$")) {
+            return "Master";
+        }
+        if (num.matches("^(34|37)\\d{13}$")) {
+            return "American Express";
+        }
+        if (num.matches("^3(?:0[0-5]|[68]\\d)\\d{11}$")) {
+            return "Diners Club";
+        }
+        if (num.matches("^(6011\\d{12}|65\\d{14}|64[4-9]\\d{13})$")) {
+            return "Discover";
+        }
+        if (num.matches("^(2014|2149)\\d{11}$")) {
+            return "enRoute";
+        }
+        if (num.matches("^(2131|1800|35\\d{3})\\d{11}$")) {
+            return "JCB";
+        }
+        if (num.matches("^8699\\d{11}$")) {
+            return "Voyager";
+        }
+        if (num.matches("^6062\\d{12,15}$")) {
+            return "HiperCard";
+        }
+        if (num.matches("^(50(50|51|52|53|54|55|56|57|58|59))\\d{10,13}$")) {
+            return "Aura";
+        }
+        return "Unknown";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(validateCreditCard("4111111111111111")); // Visa 16 Dígitos
+        System.out.println(validateCreditCard("5500000000000004")); // MasterCard
+        System.out.println(validateCreditCard("340000000000009")); // American Express
+        System.out.println(validateCreditCard("30569309025904")); // Diners Club
+        System.out.println(validateCreditCard("6011111111111117")); // Discover
+        System.out.println(validateCreditCard("201400000000009")); // enRoute
+        System.out.println(validateCreditCard("3530111333300000")); // JCB
+        System.out.println(validateCreditCard("869912345678901")); // Voyager
+        System.out.println(validateCreditCard("6062825624254001")); // HiperCard
+        System.out.println(validateCreditCard("5078601870000127980")); // Aura
+    }
+}
